@@ -42,10 +42,19 @@
     </div>
 
     <div>
-        <h1>hllo</h1>
-        <h1>hllo</h1>
-        <h1>hllo</h1>
-        <h1>hllo</h1>
+        <?php 
+        if ($handle = opendir('.')) {
+
+            while (false !== ($entry = readdir($handle))) {
+        
+                if ($entry != "." && $entry != "..") {
+        
+                    echo "$entry\n";
+                }
+            }
+        
+            closedir($handle);
+        }?>
     </div>
 </body>
 </html>
