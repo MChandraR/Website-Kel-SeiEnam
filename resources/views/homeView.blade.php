@@ -47,7 +47,7 @@
     <div class="main">
         <h1 class="section-title">Produk Unggulan</h1>
         <hr>
-        <div class="profile">
+        <div class="profile2">
             <div class="desc">
                 <h2>Kuliner Otak Otak</h2>
                 <p>Kelurahan Sei enam merupakan kelurahan yang berada di kabupaten bintan khusunya kijang</p>
@@ -55,7 +55,14 @@
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
                 </p>
             </div>
-            <img class="img-grad-left clip" style="width : 150%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
+            <!-- <div style="height: 100%;"> -->
+                <div class="product-section">
+                    <div class="clip img-grad-left">
+                        <img class="" style="width : 50%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
+                    </div>
+                    <img class="clip2" style="width : 50%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
+                </div>
+            <!-- </div> -->
         </div>
     </div>
 

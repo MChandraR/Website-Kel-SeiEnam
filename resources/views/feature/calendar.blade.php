@@ -2,7 +2,7 @@
 <div class="calendar-container">
     <header class="calendar-header">
         <p class="calendar-current-date"></p>
-        <div class="calendar-navigation">
+        <div class="calendar-navigation" style="margin-right : 1rem;">
             <span id="calendar-prev" 
                     class="material-symbols-rounded">
                 <
