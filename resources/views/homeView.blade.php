@@ -4,12 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="shortcut icon" href="{{asset('assets/images/logo/bintan.png')}}">
     <link rel="stylesheet" href="{{ asset('css/font/ubuntu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 </head>
 <body>
     @include('feature.navbar')
+    
+    <div style="position: relative;">
+        <div class="top-section">
+            <video autoplay muted loop id="bg-video">
+                <source src="{{ asset('assets/videos/DJI_0570~3.mp4') }}" type="video/mp4">
+                Your browser does not support HTML5 video.
+            </video>
+            <div class="title">
+                <h1>Selamat Datang di </h1>
+                <h1>Kelurahan Sei.Enam</h1>
+            </div>
+            <div class="top-section-2">
+                <img class="person" src="{{ asset('assets/images/bupati.png') }}" alt="">
+                <img class="bg" src="{{ asset('assets/images/background/design.png') }}" alt="">
+            </div>
+        </div>
+    </div>
 
     <div class="main">
         <h1 class="section-title">Profil Desa</h1>

@@ -82,7 +82,7 @@ nav.down{
 
 .top-section{
     color : #006799;
-    height: 100vh;
+    height: 105vh;
     width: calc(100% - 4rem);
     background-color: transparent;
     padding: 2rem 2rem 0rem 2rem;
@@ -91,6 +91,8 @@ nav.down{
     align-items: center;
     justify-content: center;
     position: relative;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 90%, rgba(0,0,0,0) 100%);
+
 }
 
 video{
@@ -106,7 +108,7 @@ video{
 }
 
 .top-section .title h1{
-    margin: 1rem 0;
+    margin: 1rem 1rem;
     font-size: 4vw;
     animation: 
     typing 3s steps(600, end);
