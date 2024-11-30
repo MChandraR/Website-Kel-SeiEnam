@@ -17,7 +17,7 @@
         </nav>
         <div class="top-section">
             <video autoplay muted loop id="bg-video">
-                <source src="{{ asset('video/DJI_0570.MP4') }}" type="video/mp4">
+                <source src="{{ asset('assets/videos/DJI_0570~3.mp4') }}" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
             <div class="title">
