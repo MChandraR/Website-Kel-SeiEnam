@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div class="main">
+    <div class="main2">
         <h1 class="section-title">Produk Unggulan</h1>
         <hr>
         <div class="profile2">
@@ -58,9 +58,11 @@
             <!-- <div style="height: 100%;"> -->
                 <div class="product-section">
                     <div class="clip img-grad-left">
-                        <img class="" style="width : 50%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
+                        <img class="" style="width : 100%; height :100%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
                     </div>
-                    <img class="clip2" style="width : 50%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
+                    <div class="clip2">
+                        <img class="" style="width : 100%; height :100%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
+                    </div>                
                 </div>
             <!-- </div> -->
         </div>
