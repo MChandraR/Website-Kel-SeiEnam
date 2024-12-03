@@ -167,6 +167,10 @@ video{
     padding : 1rem 0;
 }
 
+.profile p{
+    color : rgb(99, 99, 99);
+}
+
 
 .profile img{
     width : 100%;

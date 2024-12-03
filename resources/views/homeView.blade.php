@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Kel.Sei Enam</title>
     <link rel="shortcut icon" href="{{asset('assets/images/logo/bintan.png')}}">
     <link rel="stylesheet" href="{{ asset('css/font/ubuntu.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 </head>
 <body>
@@ -29,8 +30,29 @@
         </div>
     </div>
 
+    <div class="profile-area">
+        <div class="profile-card">
+            <img src="{{asset('assets/images/icon/city.png')}}" alt="">
+            <span>
+                Profil Kelurahan
+            </span>
+        </div>
+        <div class="profile-card">
+            <img src="{{asset('assets/images/icon/rocket.png')}}" alt="">
+            <span>
+                Visi dan Misi
+            </span>
+        </div>
+        <div class="profile-card">
+            <img src="{{asset('assets/images/icon/rocket.png')}}" alt="">
+            <span>
+                Visi dan Misi
+            </span>
+        </div>
+    </div>
+
     <div class="main">
-        <h1 class="section-title">Profil Desa</h1>
+        <h1 class="section-title">Profil Kelurahan</h1>
         <hr>
         <div class="profile">
             <div class="desc">
@@ -43,6 +65,8 @@
             <img clas="img-grad-left" src="{{asset('assets/images/seienam.jpg')}}" alt="">
         </div>
     </div>
+
+
 
     <div class="main2">
         <h1 class="section-title">Produk Unggulan</h1>
