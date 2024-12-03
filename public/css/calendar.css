@@ -115,3 +115,15 @@ header .calendar-current-date {
 .calendar-dates li:not(.active):hover::before {
     background: #e4e1e1;
 }
+
+
+@media only screen and (max-width : 1000px) {
+    .calendar-container {
+        background: rgba(0, 0, 0, 0.157);
+        border-radius: 10px;
+        /* box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12); */
+        color : white;
+        width: 100%;
+        margin-top: 4rem;
+    }
+}
