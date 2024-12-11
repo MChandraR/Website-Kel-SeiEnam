@@ -9,4 +9,5 @@ use App\Http\Controllers\UsersController;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
+
 Route::get('/users', [UsersController::class, 'index']);
