@@ -5,8 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kel.Sei Enam</title>
     <link rel="shortcut icon" href="{{asset('assets/images/logo/bintan.png')}}">
+    <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/font/ubuntu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/berita.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
@@ -20,7 +23,7 @@
                 <source src="{{ asset('assets/videos/DJI_0570~3.mp4') }}" type="video/mp4">
                 Your browser does not support HTML5 video.
             </video>
-            <div class="title">
+            <div class="titles">
                 <h1>Selamat Datang di </h1>
                 <h1>Kelurahan Sei.Enam</h1>
             </div>
@@ -44,12 +47,12 @@
                 Visi dan Misi
             </span>
         </div>
-        <div class="profile-card">
+        <a class="profile-card" href="/pelayanan">
             <img src="{{asset('assets/images/icon/customer-service.png')}}" alt="">
             <span>
                 Layanan
             </span>
-        </div>
+        </a>
     </div>
 
     <div class="main">

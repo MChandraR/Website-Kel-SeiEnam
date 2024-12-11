@@ -4,3 +4,4 @@
 <a href="https://www.flaticon.com/free-icons/buildings" title="buildings icons">Buildings icons created by muh zakaria - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/news" title="news icons">News icons created by cahiwak - Flaticon</a>
 <a href="https://www.flaticon.com/free-icons/bookmark" title="bookmark icons">Bookmark icons created by Pixel perfect - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/document" title="document icons">Document icons created by Freepik - Flaticon</a>
