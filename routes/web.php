@@ -20,3 +20,8 @@ Route::get('/template/ahliwaris', [TemplateController::class, 'ahliWaris']);
 Route::get('/admin', [AdminController::class, 'index']);
 Route::get('/admin/permohonan', [AdminController::class, 'permohonan']);
 Route::get('/admin/login', [AdminController::class, 'loginPage']);
+
+
+
+
+
