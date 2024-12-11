@@ -1,0 +1,23 @@
+.form-area{
+    display : grid;
+    column-gap : 2rem;
+    grid-template-columns : repeat(2, calc(50% - 2rem ));
+}
+
+.preview{
+    background-color: aliceblue;
+    height : 100vh;
+}
+
+.preview iframe{
+    width : 100%;
+    height : 100%;
+}
+
+
+@media only screen and (max-width : 1000px) { 
+    .form-area{
+        column-gap: 0;
+        display: inline;
+    }
+}
