@@ -5,7 +5,6 @@ use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\UsersController;
 
 Route::get('/', function () {
     return view('homeView');
@@ -24,5 +23,5 @@ Route::get('/admin/login', [AdminController::class, 'loginPage']);
 
 
 
-Route::get('/api/users', [UsersController::class, 'index']);
+
 
