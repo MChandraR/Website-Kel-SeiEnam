@@ -33,7 +33,8 @@
         "LOG_CHANNEL": "stderr",
         "SESSION_DRIVER": "cookie", 
         "MONGODB_URI" : "mongodb+srv://admin:5ooPzXGjfzoQdJlm@mydb.rvfulzg.mongodb.net/?retryWrites=true&w=majority&appName=myDB",
-        "MONGODB_DATABASE" : "pemweb"
+        "MONGODB_DATABASE" : "pemweb",
+        "DB_CONNECTION" : "mongodb"
     }
    
 }
