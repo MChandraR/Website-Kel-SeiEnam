@@ -1661,7 +1661,6 @@
             "require": {
                 "league/flysystem-local": "^3.0.0",
                 "league/mime-type-detection": "^1.0.0",
-                "mongodb/laravel-mongodb": "^5.1",
                 "php": "^8.0.2"
             },
             "conflict": {
@@ -1686,7 +1685,6 @@
                 "google/cloud-storage": "^1.23",
                 "guzzlehttp/psr7": "^2.6",
                 "microsoft/azure-storage-blob": "^1.1",
-                "mongodb/laravel-mongodb": "^5.1",
                 "mongodb/mongodb": "^1.2",
                 "phpseclib/phpseclib": "^3.0.36",
                 "phpstan/phpstan": "^1.10",
