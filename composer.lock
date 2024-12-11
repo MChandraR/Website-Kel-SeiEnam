@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5ae576b62c8ffc0d7058b4f5279579c6",
+    "content-hash": "511519ca329338811bdae87f7e6ef7df",
     "packages": [
         {
             "name": "brick/math",
@@ -1661,6 +1661,7 @@
             "require": {
                 "league/flysystem-local": "^3.0.0",
                 "league/mime-type-detection": "^1.0.0",
+                "mongodb/laravel-mongodb": "^5.1",
                 "php": "^8.0.2"
             },
             "conflict": {
@@ -1673,6 +1674,7 @@
                 "symfony/http-client": "<5.2"
             },
             "require-dev": {
+                "mongodb/laravel-mongodb": "^5.1",
                 "async-aws/s3": "^1.5 || ^2.0",
                 "async-aws/simple-s3": "^1.1 || ^2.0",
                 "aws/aws-sdk-php": "^3.295.10",
