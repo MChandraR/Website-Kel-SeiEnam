@@ -1674,7 +1674,6 @@
                 "symfony/http-client": "<5.2"
             },
             "require-dev": {
-                "mongodb/laravel-mongodb": "^5.1",
                 "async-aws/s3": "^1.5 || ^2.0",
                 "async-aws/simple-s3": "^1.1 || ^2.0",
                 "aws/aws-sdk-php": "^3.295.10",
@@ -1687,6 +1686,7 @@
                 "google/cloud-storage": "^1.23",
                 "guzzlehttp/psr7": "^2.6",
                 "microsoft/azure-storage-blob": "^1.1",
+                "mongodb/laravel-mongodb": "^5.1",
                 "mongodb/mongodb": "^1.2",
                 "phpseclib/phpseclib": "^3.0.36",
                 "phpstan/phpstan": "^1.10",
