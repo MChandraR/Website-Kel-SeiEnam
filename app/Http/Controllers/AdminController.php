@@ -13,4 +13,8 @@ class AdminController extends Controller
     public function permohonan(){
         return View('admin.permohonan');
     }
+
+    public function loginPage(){
+        return View('admin.login');
+    }
 }
