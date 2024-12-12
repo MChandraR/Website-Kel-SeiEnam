@@ -10,7 +10,7 @@ use App\Http\Controllers\PengajuanController;
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::prefix('')->group(function () {
+Route::prefix('/')->group(function () {
     Route::get('/users', [UsersController::class, 'index']);
     Route::post('/pengajuan', [PengajuanController::class, 'create']);
     Route::get('/pengajuan', [PengajuanController::class, 'get']);

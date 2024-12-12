@@ -38,6 +38,8 @@ class SessionController extends Controller
                     "data" => NULL
                 ]);
             }
+
+            
         }
 
         // Login gagal
