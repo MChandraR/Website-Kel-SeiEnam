@@ -19,15 +19,17 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang Admin!</h1>
                                     </div>
-                                    <form class="user" action="/admin/">
+                                    <span>{{$message??""}}</span>
+                                    <form class="user" action="/admin/login" method="POST">
+                                        @csrf
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                            <input type="text" class="form-control form-control-user"
+                                                id="usernameInput" name="username" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user"
+                                                id="passwordInput" placeholder="Password">
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -36,9 +38,8 @@
                                                     Me</label>
                                             </div>
                                         </div>
-                                        <a href="/admin" class="btn btn-primary btn-user btn-block">
-                                            Login
-                                        </a>
+                                        <a id="loginBtn" class="btn btn-primary btn-user btn-block">
+                                            Login                                     </a>
                                         <hr>
                                         <!-- <a href="index.html" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Login with Google
@@ -67,7 +68,41 @@
     </div>
 
     @include('admin.feature.script')
+    <script>
+        function login(){
+            $("#loginBtn")[0].disabled = true;
+            $.ajax({
+                url : "/admin/login",
+                method : "POST",
+                data : {    
+                    _token : $('input[name="_token"]')[0].value,
+                    username : $("#usernameInput")[0].value,
+                    password : $("#passwordInput")[0].value
+                },
+                success : (res)=>{
+                    Swal.fire({
+                        title: 'Login',
+                        text: res.message,
+                        icon: res.status == 200 ? 'success' : 'error',
+                        confirmButtonText: 'Ya'
+                    })
+                    $("#loginBtn")[0].disabled = false;
 
+                },
+                error : (res)=>{
+                    $("#loginBtn")[0].disabled = false;
+
+                }
+            }).done((res)=>{
+               
+            });
+        }
+
+        $("#loginBtn")[0].addEventListener('click', (e)=>{
+            e.preventDefault();
+            login();
+        });
+    </script>
 </body>
 
 </html>

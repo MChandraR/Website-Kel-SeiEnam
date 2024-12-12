@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use MongoDB\Laravel\Eloquent\Model;
+use MongoDB\Laravel\Auth\User as Authenticatable;
 
-class users extends Model
+class users extends Authenticatable
 {
     protected $table = 'users';
+    protected $fillable = ['username', 'password'];
 }
