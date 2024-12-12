@@ -8,18 +8,23 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Models\users;
 
+use Auth;
+
 class AdminController extends Controller
 {
     public function index(){
-        return View('admin.dashboard');
+        $username = Auth::user()->username ?? "";
+        return View('admin.dashboard', compact('username'));
     }
 
     public function permohonan(){
-        return View('admin.permohonan');
+        $username = Auth::user()->username ?? "";
+        return View('admin.permohonan', compact('username'));
     }
 
     public function loginPage(){
-        return View('admin.login');
+        $username = Auth::user()->username ?? "";
+        return View('admin.login', compact('username'));
     }
 
 

@@ -80,6 +80,9 @@
                     password : $("#passwordInput")[0].value
                 },
                 success : (res)=>{
+                    if(res.status == 200){
+                        window.location.href = "/admin";
+                    }
                     Swal.fire({
                         title: 'Login',
                         text: res.message,

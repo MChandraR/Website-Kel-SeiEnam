@@ -25,30 +25,19 @@
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Buat Report</a>
                     </div>
-
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
                     <div>
                         <table class="table" id="pengajuanTable">
                             <thead>
                                 <td>ID_Permohonan</td>
+                                <td>No Whatsapp</td>
                                 <td>Jenis Permohonan</td>
                                 <td>Tanggal Diminta</td>
                                 <td>Status</td>
                                 <td style="text-align:end;">Aksi</td>
                             </thead>
-                            <tbody>
-                                @for($data=0; $data<15; $data++)
-                                    <tr>
-                                        <td>ID_Permohonan</td>
-                                        <td>Jenis Permohonan</td>
-                                        <td>Tanggal Diminta</td>
-                                        <td>Status</td>
-                                        <td>
-                                            <div style="display: flex; justify-content : end;">
-                                                <button class="btn btn-primary">Proses</button>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endfor
+                            <tbody id="tableBody">
+                                
                             </tbody>
                         </table>
                     </div>
@@ -95,7 +84,45 @@
     @include('admin.feature.script')
 
     <script>
-        let table = new DataTable("#pengajuanTable");
+
+
+        function fetchData(){
+            $("#tableBody").innerHTML = "";
+            console.log( $('meta[name="csrf-token"]').attr('content'));
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url :  "/api/pengajuan",
+                success : (res)=>{
+                    let datas = [];
+                    console.log(res);
+
+                    res.data.forEach((data)=>{
+                        datas.push([data.pemohon,data.no_whatsapp ?? "",  data.tipe ?? "", new Date(data.created_at).toLocaleString(), data.status??"", "<button>Proses</button>"]);
+                    });
+                    console.log(datas);
+                    table = new DataTable("#pengajuanTable", {
+                        columns :[
+                            {title : "Pemohon"},
+                            {title : "No Whatsapp"},
+                            {title : "Jenis Permohonan"},
+                            {title : "Tanggal Diminta"},
+                            {title : "Status"},
+                            {title : "Aksi"},
+                        ],
+                        data : datas
+                    });
+                },
+                error : (err)=>{
+
+                }
+            });
+        }
+
+        fetchData();
     </script>
 </body>
 

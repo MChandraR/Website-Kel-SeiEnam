@@ -18,10 +18,10 @@ Route::get('/template', [TemplateController::class, 'index']);
 Route::get('/template/ahliwaris', [TemplateController::class, 'ahliWaris']);
 
 
-Route::get('/admin', [AdminController::class, 'index']);
-Route::get('/admin/permohonan', [AdminController::class, 'permohonan']);
+Route::get('/admin', [AdminController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/admin/permohonan', [AdminController::class, 'permohonan'])->middleware('auth');
 Route::get('/admin/login', [AdminController::class, 'loginPage']);
-Route::post('/admin/login', [SessionController::class, 'login']);
+Route::post('/admin/login', [SessionController::class, 'login'])->name('login');
 Route::post('/admin/register', [SessionController::class, 'register']);
 
 
