@@ -2,3 +2,9 @@
     background-color : #4e73df;
     color : white;
 }
+
+.modal-body{
+    display : grid;
+    grid-template-columns: repeat(2, calc(50% - 2rem));
+    column-gap : 2rem;
+}

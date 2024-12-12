@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/berita.css') }}">
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
 </head>
 <body>
     @include('feature.navbar')
@@ -73,17 +74,9 @@
     <div class="berita">
         <h1>Berita Terbaru</h1>
         <hr>
-        <div class="berita-list">
+        <div class="berita-list" id="beritaList">
             @for($i=0;$i<5;$i++)
-            <div class="berita-card">
-                <img class="icon" src="{{asset('assets/images/icon/bookmark.png')}}" alt="">
-                <h2>Judul Berita Disini</h2>
-                <span class="timestamp">Senin, 2 Desember 2024</span>
-                <p>Berita hari ini, penjualan otak-otak di Sei.Enam meningkat selama akhir tahun ini</p>
-                <div class="berita-btn-area">
-                    <button class="berita-btn">Selengkapnya</button>
-                </div>
-            </div>
+            
             @endfor
         </div>
     </div>
@@ -115,14 +108,16 @@
 
   
     @include('feature.footer')
-</body>
+    </body>
 </html>
 <script>
+    let hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum`at', 'Sabtu', 'Minggu']
+    let bulan = ['Januari', 'Februari', 'Maret','April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
     let navbar = document.getElementById('navbar');
     let logo = document.getElementById('logo');
     window.addEventListener("scroll", (event) => {
         let scroll = this.scrollY;
-        console.log(scroll)
+        //console.log(scroll)
         if(scroll>50){
             navbar.classList.add("down");
             logo.classList.add("down");
@@ -131,6 +126,35 @@
             logo.classList.remove("down");
         }
         
-        console.log(logo);
+       // console.log(logo);
     });
+
+    function fetchBerita(){
+        $.ajax({
+            url : "{{$apiRoute}}/news",
+            success : (res)=>{
+                console.log(res.data);
+                res.data.forEach((berita)=>{
+                    const waktu = new Date(berita.time);
+                    $("#beritaList")[0].innerHTML += `
+                    <div class="berita-card">
+                        <img class="icon" src="{{asset('assets/images/icon/bookmark.png')}}" alt="">
+                        <h2>${berita.title}</h2>
+                        <span class="timestamp">${hari[waktu.getDay()-1]}, ${waktu.getDate()} ${bulan[waktu.getMonth()]} ${waktu.getFullYear()}</span>
+                        <p>${berita.content}</p>
+                        <div class="berita-btn-area">
+                            <button class="berita-btn">Selengkapnya</button>
+                        </div>
+                    </div>
+                    `;
+                });
+            },
+            error : (err)=>{
+                console.log(err);
+            }
+        });
+    }
+
+
+    fetchBerita();
 </script>

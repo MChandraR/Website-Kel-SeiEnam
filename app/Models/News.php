@@ -7,14 +7,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens; 
 
-class Permohonan extends Authenticatable
+
+class News extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable; 
-    protected $table = "permohonan";
+    protected $table = "news";
     protected $guarded = [];
-
-    protected $hidden = [
-        'updated_at',
-        'remember_token',
-    ];
 }

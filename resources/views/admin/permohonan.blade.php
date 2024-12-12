@@ -16,6 +16,10 @@
                 @include('admin.feature.topbar')
                 <!-- End of Topbar -->
 
+
+                @include('admin.feature.permohonan-modal')
+
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -85,7 +89,7 @@
 
     <script>
 
-
+        let data = [];
         function fetchData(){
             const token = localStorage.getItem('apiToken');
             $("#tableBody").innerHTML = "";
@@ -102,9 +106,14 @@
                 success : (res)=>{
                     let datas = [];
                     console.log(res);
-
-                    res.data.forEach((data)=>{
-                        datas.push([data.pemohon,data.no_whatsapp ?? "",  data.tipe ?? "", new Date(data.created_at).toLocaleString(), data.status??"", "<button>Proses</button>"]);
+                    data = res.data;
+                    res.data.forEach((data, idx)=>{
+                        datas.push([data.pemohon,data.no_whatsapp ?? "",  data.tipe ?? "", new Date(data.created_at).toLocaleString(), data.status??"", 
+                        `<div style="display:flex; justify-content : right ; column-gap : 1rem;">
+                        <button class="btn btn-success" >Proses</button>
+                        <button class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="showDetail('${idx}')"> Lihat </button>
+                        </div>
+                        `]);
                     });
                     console.log(datas);
                     table = new DataTable("#pengajuanTable", {
@@ -123,6 +132,20 @@
 
                 }
             });
+        }
+
+
+        function showDetail(idx){
+            $("#detailPengajuan")[0].innerHTML = "";
+            for(let key in data[idx]){
+                console.log(key, data[idx][key]);
+                $("#detailPengajuan")[0].innerHTML += `
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">${key}</span>
+                    <input type="text" class="form-control" id="basic-url" value="${data[idx][key]}" aria-describedby="basic-addon3">
+                </div>
+                `;
+            }
         }
 
         fetchData();
