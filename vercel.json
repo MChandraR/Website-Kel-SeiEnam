@@ -13,6 +13,10 @@
         {
             "src": "/(.*)",
             "dest": "/api/index.php"
+        },
+        {
+            "source": "/api/(.*)", 
+            "destination": "/$1"
         }
     ],
     "env": {
@@ -35,9 +39,7 @@
         "MONGODB_URI" : "mongodb+srv://admin:5ooPzXGjfzoQdJlm@mydb.rvfulzg.mongodb.net/?retryWrites=true&w=majority&appName=myDB",
         "MONGODB_DATABASE" : "sei_enam",
         "DB_CONNECTION" : "mongodb"
-    },
-    "rewrites": [
-        { "source": "/api/(.*)", "destination": "/$1" }
-    ]
+    }
+    
    
 }
