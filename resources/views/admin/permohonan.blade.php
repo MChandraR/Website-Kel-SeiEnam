@@ -87,15 +87,18 @@
 
 
         function fetchData(){
+            const token = localStorage.getItem('apiToken');
             $("#tableBody").innerHTML = "";
             console.log( $('meta[name="csrf-token"]').attr('content'));
             $.ajaxSetup({
                 headers: {
+                    'Authorization': 'Bearer ' + token,
+                    'Accept': 'application/json',
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
             $.ajax({
-                url :  "/api/pengajuan",
+                url :  "{{$apiRoute}}/pengajuan",
                 success : (res)=>{
                     let datas = [];
                     console.log(res);

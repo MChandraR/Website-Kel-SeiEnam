@@ -79,16 +79,18 @@
                     username : $("#usernameInput")[0].value,
                     password : $("#passwordInput")[0].value
                 },
-                success : (res)=>{
-                    if(res.status == 200){
-                        window.location.href = "/admin";
-                    }
-                    Swal.fire({
+                success : async (res)=>{
+                    await Swal.fire({
                         title: 'Login',
                         text: res.message,
                         icon: res.status == 200 ? 'success' : 'error',
                         confirmButtonText: 'Ya'
                     })
+                    if(res.status == 200){
+                        localStorage.setItem('apiToken', res.data.token);
+                        window.location.href = "/admin";
+                    }
+                    
                     $("#loginBtn")[0].disabled = false;
 
                 },

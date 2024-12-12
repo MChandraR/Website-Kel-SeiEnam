@@ -6,9 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use App\Models\users;
-use Auth;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 class SessionController extends Controller
 {
     public function login(Request $request){
@@ -22,24 +21,34 @@ class SessionController extends Controller
 
         // Coba login menggunakan credentials
         if (Auth::attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
-            // Login berhasil
+            // Login berhasil\
             if(Auth::user()->role == "admin"){
                 Auth::guard('admin')->attempt($credentials);
+                $user = Auth::guard('admin')->user();
+                $token = $request->user()->createToken('api-token')->plainTextToken;
+
                 return response()->json([
                     "status" => 200,
                     "message" => "Berhasil login sebagai admin !",
-                    "data" => NULL
+                    "data" => [
+                        "token" => $token
+                    ]
                 ]);
             }else{
                 Auth::guard('web')->attempt($credentials);
+                $user = Auth::user();
+                $token = $user->createToken('api-token')->plainTextToken;
+
                 return response()->json([
                     "status" => 200,
                     "message" => "Berhasil login sebagai user !",
-                    "data" => NULL
+                    "data" => [
+                        "token" => $token
+                    ]
                 ]);
             }
 
-            
+
         }
 
         // Login gagal
@@ -61,7 +70,7 @@ class SessionController extends Controller
             ]);
         }
 
-        if(users::where('username',$request->username)->count() > 0){
+        if(User::where('username',$request->username)->count() > 0){
             return response()->json([
                 "status" => "error",
                 "message" => "Username telah ada, gunakan username yang unik !",
@@ -69,7 +78,7 @@ class SessionController extends Controller
             ]);
         }
 
-        if(users::where('email',$request->email)->count() > 0){
+        if(User::where('email',$request->email)->count() > 0){
             return response()->json([
                 "status" => "error",
                 "message" => "Email telah ada, gunakan email yang unik !",
@@ -87,7 +96,7 @@ class SessionController extends Controller
 
     protected function create(array $data)
     {
-        return users::create([
+        return User::create([
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);

@@ -15,8 +15,8 @@
             "dest": "/api/index.php"
         },
         {
-            "src": "/api/(.*)", 
-            "dest": "/api/api/$1"
+            "src": "/api/(.*)",
+            "dest": "/api/index.php"
         }
     ],
     "env": {
@@ -38,7 +38,8 @@
         "SESSION_DRIVER": "cookie", 
         "MONGODB_URI" : "mongodb+srv://admin:5ooPzXGjfzoQdJlm@mydb.rvfulzg.mongodb.net/?retryWrites=true&w=majority&appName=myDB",
         "MONGODB_DATABASE" : "sei_enam",
-        "DB_CONNECTION" : "mongodb"
+        "DB_CONNECTION" : "mongodb",
+        "API_ROUTE" : "/api/api"
     }
     
    
