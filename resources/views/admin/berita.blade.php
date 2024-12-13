@@ -28,8 +28,13 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="mb-0 text-gray-800 text-bold">Data Berita Website</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <div class="d-none d-sm-inline-block">
+                            <a href="#" class=" btn btn-sm btn-primary shadow-sm"  data-bs-toggle="modal" data-bs-target="#addModal"><i
+                                    class="fas fa-download fa-sm text-white-50"></i> Tambah Berita</a>
+
+                            <a href="#" class=" btn btn-sm btn-success shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i> Buat Report</a>
+                        </div>
                     </div>
                     <meta name="csrf-token" content="{{ csrf_token() }}">
                     <div>
@@ -153,6 +158,40 @@
                 $("#waktuBerita")[0].value = datas[idx].time;
                 $("#kontenBerita")[0].innerHTML = datas[idx].content;
             }
+        }
+
+        function addNews(){
+
+            console.log({
+                title : $("#judulBeritaAdd")[0].value,
+                waktu : $("#waktuBeritaAdd")[0].value,
+                content : $("#kontenBeritaAdds")[0].value,
+            });
+
+            $.ajax({
+                url : "{{$apiRoute}}/news",
+                method : "POST",
+                data : {
+                    title : $("#judulBeritaAdd")[0].value,
+                    time : $("#waktuBeritaAdd")[0].value,
+                    content : $("#kontenBeritaAdds")[0].value,
+                },
+                success : async (res)=>{
+                    fetchBerita();
+                    let conf = await Swal.fire({
+                        icon: res.status == 200 ? "success" : "error",
+                        title: "Info",
+                        text: res.message,
+                    });
+                },
+                error : async (err)=>{
+                    let conf = await Swal.fire({
+                        icon: "error",
+                        title: "Error",
+                        text: err.statusText,
+                    });
+                }
+            });
         }
 
         function updateNews(){

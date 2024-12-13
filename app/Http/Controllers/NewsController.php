@@ -17,14 +17,27 @@ class NewsController extends Controller
 
 
     public function store(Request $req){
+
+        if(
+            $req->title != NULL && $req->title !="" &&
+            $req->time != NULL && $req->time !="" &&
+            $req->content != NULL && $req->content !="" 
+        ){
+            return response()->json([
+                "status" => 200,
+                "message" => "Berhasil menambahkan data berita !",
+                "data" => News::create([
+                    "title" => $req->title,
+                    "time" => $req->time,
+                    "content" => $req->content
+                ])
+            ]);
+        }
+
         return response()->json([
-            "status" => 200,
-            "message" => "Berhasil menambahkan data berita !",
-            "data" => News::create([
-                "title" => $req->title,
-                "time" => $req->time,
-                "content" => $req->content
-            ])
+            "status" => 201,
+            "message" => "Gagal Menambahkan data berita : Field tidak lengkap !",
+            "data" => NULL
         ]);
     }
 
