@@ -41,6 +41,28 @@ class PengajuanController extends Controller
     }
 
 
+    //Fungsi untuk mengupdate data pengajuan atau memproses pengajuan oleh admin
+    public function update(Request $req){
+        $updateData = [];
+        if($req->id != NULL && $req->id != ""){
+            if($req->status != NULL && $req->status != "")$updateData["status"] = $req->status;
+
+            return response()->json([
+                "status" => 200,
+                "message" => "Berhasil megnupdate data permohonan !",
+                "data" => Permohonan::where('_id', $req->id)->update($updateData)
+            ]);
+
+        }
+
+        return response()->json([
+            "status" => 201,
+            "message" => "Gagal mengupdate data permohonan : id tidak ditemukan !",
+            "data" => NULL
+        ]);
+    }
+
+
     public function ahliWaris(Request $req){
         if( 
             $req->pemohon != NULL && $req->pemohon != "" &&

@@ -110,7 +110,7 @@
                     res.data.forEach((data, idx)=>{
                         datas.push([data.pemohon,data.no_whatsapp ?? "",  data.tipe ?? "", new Date(data.created_at).toLocaleString(), data.status??"", 
                         `<div style="display:flex; justify-content : right ; column-gap : 1rem;">
-                        <button class="btn btn-success" >Proses</button>
+                        <button class="btn btn-success" onClick="updateData('${data.id}')">Proses</button>
                         <button class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="showDetail('${idx}')"> Lihat </button>
                         </div>
                         `]);
@@ -125,7 +125,9 @@
                             {title : "Status"},
                             {title : "Aksi"},
                         ],
-                        data : datas
+                        data : datas,
+                        stateSave: true,
+                        "bDestroy": true
                     });
                 },
                 error : (err)=>{
@@ -142,10 +144,37 @@
                 $("#detailPengajuan")[0].innerHTML += `
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon3">${key}</span>
-                    <input type="text" class="form-control" id="basic-url" value="${data[idx][key]}" aria-describedby="basic-addon3">
+                    <input type="text" id="${key}" class="form-control" id="basic-url" value="${data[idx][key]}" aria-describedby="basic-addon3">
                 </div>
                 `;
             }
+        }
+
+
+        function updateData(idx){
+            $.ajaxSetup({
+                headers : {
+                    "Authorization" : "Bearer "  + localStorage.getItem('apiToken'),
+                    "Accept" : "application/json"
+                }
+            });
+
+
+            $.ajax({
+                url : "{{$apiRoute}}/pengajuan",
+                method : "put",
+                data : {
+                    id : idx,
+                    status : "pending"
+                },
+                success : (res)=>{
+                    console.log(res);
+                    fetchData();
+                },
+                error : (err)=>{
+                    console.log(err.statusText);
+                }
+            });
         }
 
         fetchData();

@@ -21,5 +21,6 @@ Route::prefix('/')->group(function () {
 
     Route::get('/users', [UsersController::class, 'index']);
     Route::post('/pengajuan', [PengajuanController::class, 'create']);
+    Route::put('/pengajuan', [PengajuanController::class, 'update']);
     Route::get('/pengajuan', [PengajuanController::class, 'get'])->middleware("auth:sanctum");
 });

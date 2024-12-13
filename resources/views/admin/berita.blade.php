@@ -156,6 +156,13 @@
         }
 
         function updateNews(){
+            $.ajaxSetup({
+                headers : {
+                    "Authorization" : "Bearer "  + localStorage.getItem('apiToken'),
+                    "Accept" : "application/json"
+                }
+            });
+
             $.ajax({
                 url : "{{$apiRoute}}/news",
                 method : "put",
