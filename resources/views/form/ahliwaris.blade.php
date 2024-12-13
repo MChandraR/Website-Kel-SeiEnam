@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{asset('css/ahliwaris.css')}}">
 
 
-<form action="">
+<div>
     <div class="form-area">
         <!-- <div class="preview">
             <iframe src="/template/{{$pengajuan}}" frameborder="0"></iframe>
@@ -11,25 +11,25 @@
             <hr>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Masukkan Nama Pemohon : </label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama lengkap yang mewarisi">
+                <input type="text" class="form-control" id="namaPemohon" placeholder="Masukkan nama lengkap yang mewarisi">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Masukkan No.Whatsapp: </label>
-                <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nomor whatsapp">
+                <input type="number" class="form-control" id="noWhatsapp" placeholder="Masukkan nomor whatsapp">
             </div>
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Masukkan Tanggal Meninggal : </label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama lengkap yang mewarisi">
+                <input type="date" class="form-control" id="tglMeninggal" placeholder="Masukkan nama lengkap yang mewarisi">
             </div>
         
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nomor Akte Kematian : </label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nomor akte kematian">
+                <input type="text" class="form-control" id="noAkteKematian" placeholder="Masukkan nomor akte kematian">
             </div>
         
             <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nomor KK  : </label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nomor kartu keluarga">
+                <input type="text" class="form-control" id="noKK" placeholder="Masukkan nomor kartu keluarga">
             </div>
 
         </div>
@@ -39,13 +39,19 @@
                 
             </div>
             
-            <br>
-            <button class="btn btn-primary" id="tambah-waris">Tambah Lagi</button>
-            <button class="btn btn-danger" id="kurang-waris">Kurangi</button>
+            <div class="button-area">
+                <button class="btn btn-primary" id="tambah-waris">Tambah Lagi</button>
+                <button class="btn btn-danger" id="kurang-waris">Kurangi</button>
+            </div>
         </div>
     </div>
+
+    <center>
+        <br><br><br>
+        <button class="btn btn-primary" onClick="addPengajuan()">Ajukan Surat</button>
+    </center>
    
-</form>
+</div>
 
 <script>
 
@@ -62,17 +68,17 @@ function addAhliWaris(){
         <hr>
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Masukkan Nama Lengkap Pewaris ${counter} : </label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama lengkap yang mewarisi">
+            <input type="text" class="form-control"  placeholder="Masukkan nama lengkap yang mewarisi">
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Masukkan Tgl.Lahir Pewaris ${counter} : </label>
-            <input type="date" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nim yang mewarisi">
+            <input type="date" class="form-control" placeholder="Masukkan tgl lahir">
         </div>
 
         <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Masukkan NIK Lengkap Pewaris  ${counter} : </label>
-            <input type="number" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nim yang mewarisi">
+            <input type="number" class="form-control"  placeholder="Masukkan nik yang mewarisi">
         </div>
         <br>
     </div>
@@ -84,6 +90,8 @@ tambahWaris.addEventListener('click', (e)=>{
     addAhliWaris();
 });
 
+
+
 kurangWaris.addEventListener('click', (e)=>{
     e.preventDefault();
     let child = warisList.children;
@@ -91,6 +99,52 @@ kurangWaris.addEventListener('click', (e)=>{
     warisList.removeChild(warisList.lastElementChild);
     console.log(child);
 });
+
+
+function addPengajuan(){
+    let ahliwaris = [];
+    let children = warisList.children;
+    for(let child in children){
+        if(Number.isInteger(parseInt(child))){
+            ahliwaris.push({
+                nama  : children[child].children[2].children[1].value,
+                tgl_lahir  : children[child].children[3].children[1].value,
+                nik  : children[child].children[4].children[1].value,
+            });
+           
+        }
+    }
+    console.log(ahliwaris);
+
+    $.ajaxSetup({
+        headers : {
+            "Authorization" : "Bearer " + localStorage.getItem("apiToken"),
+            "Accept" : "application/json"
+        }
+    });
+
+    $.ajax({
+        url : "{{$apiRoute}}/pengajuan",
+        method : "POST",
+        data :{
+            tipe : "aw",
+            pemohon : $("#namaPemohon")[0].value,
+            no_whatsapp : $("#noWhatsapp")[0].value,
+            tgl_meninggal : $("#tglMeninggal")[0].value,
+            no_kartu_keluarga : $("#noKK")[0].value,
+            no_akte_kematian : $("#noAkteKematian")[0].value,
+            ahli_waris : ahliwaris
+        },
+
+
+        success : (res)=>{
+            console.log(res);
+        },
+        error : (err)=>{
+            console.log(err.statusText);
+        }
+    });
+}
 
 addAhliWaris();
 

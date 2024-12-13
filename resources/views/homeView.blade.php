@@ -143,7 +143,7 @@
                         <span class="timestamp">${hari[waktu.getDay()-1]}, ${waktu.getDate()} ${bulan[waktu.getMonth()]} ${waktu.getFullYear()}</span>
                         <p>${berita.content}</p>
                         <div class="berita-btn-area">
-                            <button class="berita-btn">Selengkapnya</button>
+                            <a class="berita-btn" href="/berita?id=${berita.id}">Selengkapnya</a>
                         </div>
                     </div>
                     `;

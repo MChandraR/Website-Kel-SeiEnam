@@ -101,6 +101,12 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            let status = {
+                pending : "diproses",
+                diproses : "selesai"
+            }
+
             $.ajax({
                 url :  "{{$apiRoute}}/pengajuan",
                 success : (res)=>{
@@ -110,7 +116,7 @@
                     res.data.forEach((data, idx)=>{
                         datas.push([data.pemohon,data.no_whatsapp ?? "",  data.tipe ?? "", new Date(data.created_at).toLocaleString(), data.status??"", 
                         `<div style="display:flex; justify-content : right ; column-gap : 1rem;">
-                        <button class="btn btn-success" onClick="updateData('${data.id}')">Proses</button>
+                        <button class="btn btn-${data.status == "pending" ?  "success" : "warning"}" onClick="updateData('${data.id}', '${status[data.status]}')">${data.status == "pending" ? "Proses" : "Selesai"}</button>
                         <button class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="showDetail('${idx}')"> Lihat </button>
                         </div>
                         `]);
@@ -151,7 +157,7 @@
         }
 
 
-        function updateData(idx){
+        function updateData(idx, status){
             $.ajaxSetup({
                 headers : {
                     "Authorization" : "Bearer "  + localStorage.getItem('apiToken'),
@@ -165,7 +171,7 @@
                 method : "put",
                 data : {
                     id : idx,
-                    status : "pending"
+                    status : status
                 },
                 success : (res)=>{
                     console.log(res);

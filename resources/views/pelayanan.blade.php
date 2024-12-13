@@ -33,15 +33,25 @@
             <?php 
             
                 $pelayanan = [
-                    "Pengajuan SKTM",
-                    "Surat Pindah",
+                    [
+                        "name" => "Surat Ahli Waris",
+                        "url" => "/pengajuan?tipe=ahliwaris"
+                    ],
+                    [
+                        "name" => "Pengajuan SKTM",
+                        "url" => "/pengajuan?tipe=sktm"
+                    ],
+                    [
+                        "name" => "Surat Pindah",
+                        "url" => "/pengajuan?tipe=suratpindah"
+                    ]
                 ];
             ?>
             @foreach($pelayanan as $layanan)
-            <div class="service-card">
+            <a class="service-card" href="{{$layanan["url"]}}">
                 <img src="{{asset('assets/images/icon/documents.png')}}" alt="">
-                <h5>{{$layanan}}</h5>
-            </div>
+                <h5>{{$layanan["name"]}}</h5>
+            </a>
             @endforeach
         </div>
     </div>

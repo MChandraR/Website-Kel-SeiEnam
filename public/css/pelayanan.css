@@ -36,10 +36,12 @@
 }
 
 .service-card{
+    text-decoration : none;
     background-color: aliceblue;
     height : 20vh;
     width : 20vh;
     padding: 1rem;
+    color : #006799;
     border-radius : .5rem;
 }
 

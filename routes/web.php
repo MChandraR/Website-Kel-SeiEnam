@@ -5,6 +5,7 @@ use App\Http\Controllers\PelayananController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Models\Session;
 
@@ -14,6 +15,7 @@ Route::get('/', function () {
 
 
 Route::get('/layanan', [PelayananController::class, 'index']);
+Route::get('/berita', [BeritaController::class, 'index']);
 Route::get('/pengajuan', [PengajuanController::class, 'index']);
 Route::get('/template', [TemplateController::class, 'index']);
 Route::get('/template/ahliwaris', [TemplateController::class, 'ahliWaris']);
