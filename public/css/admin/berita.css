@@ -1,0 +1,9 @@
+.news-body{
+    display  : grid; 
+    grid-template-columns : repeat(2 , calc(50% - 2rem));
+    column-gap : 2rem;
+}
+
+.news-body img{
+    width : 100%;
+}

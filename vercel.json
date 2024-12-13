@@ -40,6 +40,7 @@
         "MONGODB_DATABASE" : "sei_enam",
         "DB_CONNECTION" : "mongodb",
         "API_ROUTE" : "/api/api"
+       
     }
     
    

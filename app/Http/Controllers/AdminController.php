@@ -27,7 +27,10 @@ class AdminController extends Controller
         return View('admin.login', compact('username'));
     }
 
-
+    public function berita(){
+        $username = Auth::user()->username?? "";
+        return View('admin.berita', compact('username'));
+    }
 
    
 }
