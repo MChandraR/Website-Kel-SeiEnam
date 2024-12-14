@@ -13,6 +13,11 @@ class PengajuanController extends Controller
     }
 
 
+    public function daftar(){
+        return view('daftar-pengajuan');
+    }
+
+
     //0 - Ahli waris
     public function create(Request $req){
        if($req->tipe == "aw") return $this->ahliWaris($req);
@@ -37,6 +42,15 @@ class PengajuanController extends Controller
             "status" => 200,
             "message" => "Berhasil mengambil data permohonan !",
             "data" => Permohonan::all()
+        ]);
+    }
+
+
+    public function daftarAjuan(){
+        return response()->json([
+            "status" => 200,
+            "message" => "Berhasil mengambil data permohonan !",
+            "data" => Permohonan::select(["pemohon", "no_whatsapp","tipe"])->get()
         ]);
     }
 

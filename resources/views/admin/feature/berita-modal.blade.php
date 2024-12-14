@@ -71,7 +71,7 @@
 
           <div class="mb-3">
             <label for="exampleFormControlInput1" class="form-label">Konten Berita</label>
-            <textarea type="text" class="form-control" id="kontenBeritaAdds" placeholder=""></textarea>
+            <textarea type="text" class="form-control" id="kontenBeritaAdd" placeholder=""></textarea>
           </div>
 
       

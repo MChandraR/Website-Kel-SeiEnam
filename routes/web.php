@@ -17,6 +17,7 @@ Route::get('/', function () {
 Route::get('/layanan', [PelayananController::class, 'index']);
 Route::get('/berita', [BeritaController::class, 'index']);
 Route::get('/pengajuan', [PengajuanController::class, 'index']);
+Route::get('/daftar-pengajuan', [PengajuanController::class, 'daftar']);
 Route::get('/template', [TemplateController::class, 'index']);
 Route::get('/template/ahliwaris', [TemplateController::class, 'ahliWaris']);
 
