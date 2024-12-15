@@ -48,7 +48,7 @@
 
     <center>
         <br><br><br>
-        <button class="btn btn-primary" onClick="addPengajuan()">Ajukan Surat</button>
+        <button class="btn btn-primary btn-ajukan" onClick="addPengajuan()">Ajukan Surat</button>
     </center>
    
 </div>

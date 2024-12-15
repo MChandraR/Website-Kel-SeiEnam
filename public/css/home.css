@@ -104,7 +104,7 @@ video{
 
 .profile2{
     display : grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 60% 40%;
     justify-content: end;
     padding : 1rem 0;
 }

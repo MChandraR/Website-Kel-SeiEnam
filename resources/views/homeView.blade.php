@@ -29,7 +29,7 @@
                 <h1>Kelurahan Sei.Enam</h1>
             </div>
             <div class="top-section-2">
-                <img class="person" src="{{ asset('assets/images/bupati.png') }}" alt="">
+                <img class="person" src="{{ asset('assets/images/lurah-sei-enam.png') }}" alt="">
                 <img class="bg" src="{{ asset('assets/images/background/design.png') }}" alt="">
             </div>
         </div>
@@ -62,9 +62,8 @@
         <div class="profile">
             <div class="desc">
                 <h2>Selamat Datang di Kelurahan Sei.Enam</h2>
-                <p>Kelurahan Sei enam merupakan kelurahan yang berada di kabupaten bintan khusunya kijang</p>
                 <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Sei Enam merupakan salah satu kelurahan yang ada di Kecamatan Bintan Timur, Kabupaten Bintan, Provinsi Kepulauan Riau. Berdasarkan informasi dari https://kampungkb.bkkbn.go.id/, kelurahan Sungai Enam memiliki luas wilayah 52,50 Km2 , dan dihuni sekitar lebih dari 2.713  jiwa penduduk. Sesuai dengan namanya, yaitu Sei Enam, kelurahan ini yang dilingkari oleh enam sungai, yaitu Sungai Kalang Tua, Sungai Tg Tili, Sungai Awat, Sungai Ulu Arang, Sungai Semaram, dan Sungai Mantang.
                 </p>
             </div>
             <img clas="img-grad-left" src="{{asset('assets/images/seienam.jpg')}}" alt="">
@@ -88,16 +87,16 @@
         <div class="profile2">
             <div class="desc">
                 <h2>Kuliner Otak Otak</h2>
-                <p>Kelurahan Sei enam merupakan kelurahan yang berada di kabupaten bintan khusunya kijang</p>
                 <p>
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+                    Otak-otak Sei Enam merupakan kuliner khas yang menjadi kebanggaan masyarakat Kelurahan Sei Enam, Bintan. Hidangan ini terbuat dari olahan ikan segar hasil tangkapan laut setempat, seperti ikan tenggiri atau cumi-cumi, yang memberikan cita rasa autentik dengan tekstur yang lembut. Proses pembuatannya melibatkan penghalusan bahan utama yang dicampur dengan bumbu khas Nusantara, seperti bawang putih, santan, dan berbagai rempah pilihan. Setelah itu, adonan dibungkus menggunakan daun kelapa muda, menambah daya tarik tradisionalnya.
+Keunikan otak-otak Sei Enam terletak pada penggunaan daun kelapa sebagai pembungkus, yang memberikan aroma khas saat dipanggang di atas bara api. Hidangan ini tidak hanya menjadi makanan favorit masyarakat lokal, tetapi juga daya tarik wisata kuliner yang mampu memperkenalkan potensi daerah Sei Enam kepada para pengunjung.
                 </p>
             </div>
             <!-- <div style="height: 100%;"> -->
                 <div class="product-section">
-                    <div class="clip img-grad-left">
+                    <!-- <div class="clip img-grad-left">
                         <img class="" style="width : 100%; height :100%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
-                    </div>
+                    </div> -->
                     <div class="clip2">
                         <img class="" style="width : 100%; height :100%;" src="{{asset('assets/images/content/otak-otak.jpg')}}" alt="">
                     </div>                

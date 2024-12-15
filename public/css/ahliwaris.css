@@ -27,4 +27,10 @@
         column-gap: 0;
         row-gap : 2rem;
     }
+    
+    .btn-ajukan{
+        width : 100%;
+        font-weight : bold;
+        padding : 1rem 0;
+    }
 }

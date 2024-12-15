@@ -28,6 +28,10 @@
 
 .berita-card h2{
     color : #006799;
+    line-height: 2rem;
+    height: calc(2 * 2rem);
+    word-wrap: break-word;
+    overflow: hidden;
 }   
 
 .berita-card p{
@@ -54,6 +58,11 @@
     display : flex;
     justify-content : end;
 }
+
+.berita-btn{
+    text-decoration: none;
+}
+
 
 .berita-btn{
     background-color : #006799;

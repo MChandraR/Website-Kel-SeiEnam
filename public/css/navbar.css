@@ -54,3 +54,45 @@ nav.down{
     color : #006799;
     font-weight : bold;
 }
+
+.nav-title2{
+    margin : 0;
+}
+
+@media only screen and (max-width : 900px){
+    nav{
+        display : inline;  
+        padding : 1rem;     
+    }
+
+    .nav-title{
+        display:flex;
+        align-items : center;
+        column-gap : 1rem;
+        font-size : 1rem;
+    }
+
+    .nav-item{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        position: relative;
+        margin: 0;
+        margin-top : .5rem;
+    }
+
+    .nav-item a{
+
+        text-align: center;
+    }
+
+    .nav-title1{
+        font-size : 1rem;
+    }
+
+    .nav-title2{
+        font-size : .8rem;
+        line-height: 1rem;
+    }
+    
+}
