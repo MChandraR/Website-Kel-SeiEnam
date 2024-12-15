@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="{{asset('css/pengaduan.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/font/ubuntu.css')}}">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
 </head>
 <body>
     @include('feature.navbar')
@@ -32,26 +34,53 @@
         <div class="form-area">
             <div class="mb-3 text-bold">
                 <label for="exampleFormControlInput1" class="form-label h4">Nomor Whatsapp</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nomor whatsapp anda">
+                <input type="email" class="form-control" id="waField" placeholder="Masukkan nomor whatsapp anda jika perlu dihubungi">
             </div>
 
             <div class="mb-3 text-bold">
                 <label for="exampleFormControlInput1" class="form-label h4">Nama Alias</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan nama panggilan jika perlu dihubungi">
+                <input type="email" class="form-control" id="namaField" placeholder="Masukkan nama panggilan jika perlu dihubungi">
             </div>
 
             <div class="mb-3 text-bold">
                 <label for="exampleFormControlInput1" class="form-label h4">Alasan pengaduan</label>
-                <textarea type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan keluhan atau saran anda disini !"></textarea>
+                <textarea type="email" class="form-control " style="height : 8rem;" id="keluhanField" placeholder="Masukkan keluhan atau saran anda disini !"></textarea>
             </div>
 
-            <div style="display : flex; justify-cotent : right;">
-                <button class="btn btn-primary ">Adukan</button>
+            <div style="display : flex; justify-content : right;">
+                <button class="btn btn-primary " onClick="addPengaduan()">Adukan</button>
             </div>
 
         </div>
     </div>
 
     @include('feature.footer')
+
+
+    <script>
+        function addPengaduan(){
+            $.ajax({
+                url : "{{$apiRoute}}/pengaduan",
+                method : "POST",
+                data : {
+                    nama : $("#namaField")[0].value,
+                    no_whatsapp : $("#waField")[0].value,
+                    keluhan : $("#keluhanField")[0].value,
+                },
+                success : (res)=>{
+                    if(res.status == 200){
+                        $("#namaField")[0].value = "";
+                        $("#waField")[0].value = "";
+                        $("#keluhanField")[0].value = "";
+                    }
+
+                    console.log(res);
+                },
+                error : (err)=>{
+                    alert(err);
+                }
+            });
+        }
+    </script>
 </body>
 </html>

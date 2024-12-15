@@ -31,6 +31,7 @@ Route::post('/admin/login', [SessionController::class, 'login'])->name('login');
 Route::post('/admin/register', [SessionController::class, 'register']);
 
 Route::get('/pengaduan', [PengaduanController::class, "index"]);
+Route::get('/daftar-aduan', [PengaduanController::class, "daftar"]);
 
 
 
