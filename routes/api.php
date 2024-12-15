@@ -31,4 +31,5 @@ Route::prefix('/')->group(function () {
     Route::get('/pengaduan', [PengaduanController::class, 'read']);
     Route::patch('/pengaduan', [PengaduanController::class, 'readmin']);
     Route::post('/pengaduan', [PengaduanController::class, 'store']);
+    Route::delete('/pengaduan', [PengaduanController::class, 'destroy']);
 });

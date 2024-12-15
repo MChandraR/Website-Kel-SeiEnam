@@ -28,6 +28,11 @@ class AdminController extends Controller
         return View('admin.permohonan', compact('username'));
     }
 
+    public function pengaduan(){
+        $username = Auth::user()->username ?? "";
+        return View('admin.pengaduan', compact('username'));
+    }
+
     public function loginPage(){
         $username = Auth::user()->username ?? "";
         return View('admin.login', compact('username'));

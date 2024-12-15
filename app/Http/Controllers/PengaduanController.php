@@ -64,4 +64,20 @@ class PengaduanController extends Controller
             "data" => NULL
         ]);
     }
+
+    public function destroy(Request $req){
+        if($req->id != NULL && $req->id != ""){
+            return response()->json([
+                "status" => 200, 
+                "message" => "Berhasil menghapus data pengaduan !",
+                "data" => Pengaduan::where('_id', $req->id)->delete()
+            ]);
+        }
+
+        return response()->json([
+            "status" => 201, 
+            "message" => "Gagal menambahkan data pengaduan  :  ID tidak ditemukan !",
+            "data" => NULL
+        ]);
+    }
 }

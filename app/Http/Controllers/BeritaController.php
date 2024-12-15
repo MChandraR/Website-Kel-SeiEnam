@@ -15,6 +15,6 @@ class BeritaController extends Controller
 
         $beritaList = News::take(10)->get();
 
-        return View('berita', compact(['berita', 'beritaList']));
+        return View('berita', compact(['berita', 'beritaList', 'id']));
     }
 }

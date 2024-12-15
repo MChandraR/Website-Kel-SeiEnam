@@ -25,6 +25,7 @@ Route::get('/template/ahliwaris', [TemplateController::class, 'ahliWaris']);
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth')->name('dashboard');
 Route::get('/admin/permohonan', [AdminController::class, 'permohonan'])->middleware('auth');
+Route::get('/admin/pengaduan', [AdminController::class, 'pengaduan'])->middleware('auth');
 Route::get('/admin/berita', [AdminController::class, 'berita']);
 Route::get('/admin/login', [AdminController::class, 'loginPage']);
 Route::post('/admin/login', [SessionController::class, 'login'])->name('login');

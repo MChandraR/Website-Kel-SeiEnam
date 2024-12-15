@@ -22,7 +22,7 @@
             <h3>{{$berita->time ?? ""}}</h3>
             <p class="keterangan">{{$berita->content ?? ""}} </p>
             <div class="btn-list">
-                <a class="btn btn-primary text-white py-10">
+                <a class="btn btn-primary text-white py-10" href="/">
                     Kembali ke Beranda
                 </a>
     
@@ -31,14 +31,16 @@
 
         <div class="berita-list">
            @foreach($beritaList as $data)
+           @if($data->id != $id)
             <div class="berita-card">
                 <h5>{{$data->title}}</h5>
                 <span>{{$data->time}}</span>
                 <p>{{$data->content}}</p>
                 <div class="button-view-area">
-                    <button class="btn btn-primary" >Selengkapnya</button>
+                    <a class="btn btn-primary" href="/berita?id={{$data->id}}">Selengkapnya</a>
                 </div>
             </div>
+            @endif
            @endforeach
         </div>
     </div>
