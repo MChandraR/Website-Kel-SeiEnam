@@ -23,5 +23,6 @@ Route::prefix('/')->group(function () {
     Route::post('/pengajuan', [PengajuanController::class, 'create']);
     Route::put('/pengajuan', [PengajuanController::class, 'update'])->middleware("auth:sanctum");
     Route::get('/pengajuan', [PengajuanController::class, 'get'])->middleware("auth:sanctum");
+   
     Route::get('/daftar-pengajuan', [PengajuanController::class, 'daftarAjuan']);
 });

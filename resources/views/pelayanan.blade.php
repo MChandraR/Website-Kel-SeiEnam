@@ -20,12 +20,12 @@
             <h1 class="header">Selamat Datang di Halaman Pelayanan</h1>
             <p class="keterangan">Silahkan memilih jenis layanan yang ingin diakses pada menu disamping, isi data yang diperlukan kemudian tunggu hingga proses selesai  </p>
             <div class="btn-list">
-                <button class="back-btn btn text-white">
+                <a class="back-btn btn text-white" href="/">
                     Kembali ke Beranda
-                </button>
-                <button class="btn btn-warning text-white fw-bold">
+                </a>
+                <a class="back-btn btn btn-warning text-white fw-bold" href="/daftar-pengajuan" style="background-color : #ffc107;">
                     Lihat Daftar
-                </button>
+                </a>
             </div>
         </div>
 

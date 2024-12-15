@@ -47,10 +47,17 @@ class PengajuanController extends Controller
 
 
     public function daftarAjuan(){
+        $data = Permohonan::select(["pemohon", "no_whatsapp","tipe"])->get();
+
+        foreach($data as $dat){
+            $dat->no_whatsapp = "08******".substr($dat->no_whatsapp, -4,4);
+            $dat->pemohon = substr($dat->pemohon, 0,4). "********";
+        }
+
         return response()->json([
             "status" => 200,
             "message" => "Berhasil mengambil data permohonan !",
-            "data" => Permohonan::select(["pemohon", "no_whatsapp","tipe"])->get()
+            "data" => $data
         ]);
     }
 
