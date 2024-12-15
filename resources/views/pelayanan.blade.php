@@ -38,11 +38,15 @@
                         "url" => "/pengajuan?tipe=ahliwaris"
                     ],
                     [
-                        "name" => "Pengajuan SKTM",
+                        "name" => "Surat Keterangan Penghasilan",
                         "url" => "/pengajuan?tipe=sktm"
                     ],
                     [
-                        "name" => "Surat Pindah",
+                        "name" => "Surat Kematian",
+                        "url" => "/pengajuan?tipe=suratpindah"
+                    ],
+                    [
+                        "name" => "Surat Keterangan Domisili ",
                         "url" => "/pengajuan?tipe=suratpindah"
                     ]
                 ];

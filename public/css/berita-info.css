@@ -29,3 +29,37 @@
     justify-content : end;
 }
 
+@media only screen and (max-width : 900px){
+    .berita-list{
+        display: grid;
+        row-gap: 1rem;
+        grid-template-columns : 100%;
+    
+    }
+    
+    
+    .berita-card{
+        background-color: rgb(254, 205, 82);
+        padding : 1rem;
+        color : #006799;
+        border-radius : .2rem;
+        border-radius: 1rem 0;
+    }
+    
+    .berita-main{
+        display : grid;
+        margin : 10rem 1rem;
+        row-gap: 3rem;
+        grid-template-columns: 100%;
+    }
+    
+    .berita-card p{
+        color : rgb(65, 65, 65);
+    }
+    
+    .button-view-area{
+        display : flex;
+        justify-content : end;
+    }
+}
+
