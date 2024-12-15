@@ -45,7 +45,7 @@
                 <textarea type="email" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan keluhan atau saran anda disini !"></textarea>
             </div>
 
-            <div class="flex justify-end">
+            <div style="display : flex; justify-cotent : right;">
                 <button class="btn btn-primary ">Adukan</button>
             </div>
 
