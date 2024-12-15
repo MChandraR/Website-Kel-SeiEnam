@@ -23,7 +23,7 @@
     padding-left : 2rem;
     border-radius: 0 0 1rem ;
     background-color: rgb(255, 208, 0);
-    width : calc(31% - 2rem);
+    width : calc(33% - 1rem);
 }
 
 .berita-card h2{
@@ -78,10 +78,20 @@
 
     .berita-card{
         column-gap: 0rem;
-        width : 35%;
+        width :45%;
         margin-top : 1rem;
         padding : 1rem;
         padding-left : 2rem;
+    }
+
+
+    .berita-card p{
+        color : rgb(0, 0, 0);
+        line-height: 1rem;
+        height: calc(5 * 1rem);
+        word-wrap: break-word;
+        overflow: hidden;
+        /* text-shadow : 0 0 1px black; */
     }
 
     .berita-card h2{
@@ -96,6 +106,8 @@
 
     .berita-btn{
         width : 100%;
+        font-size: .7rem;
+        text-decoration: none;
     }
 
     .berita-card p{
