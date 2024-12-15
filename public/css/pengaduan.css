@@ -1,0 +1,36 @@
+.btn-list{
+    display : flex;
+    column-gap : 1rem;
+}
+
+.pelayanan-main{
+    margin : 7rem 3rem;
+    display : grid;
+    grid-template-columns : calc(50% - 1rem) calc(50% - 1rem);
+    column-gap : 3rem;
+}
+
+.header{
+    color : #006799;
+}
+
+.back-btn{
+    border : none;
+    color : white;
+    padding : 1rem;
+    font-weight : bold;
+    font-size : 1rem;
+    border-radius : .2rem;
+    background-color : #006799;
+}
+
+.keterangan{
+    margin : 3rem 0;
+}
+
+.form-area{
+    padding : 1rem;
+    border-radius : .5rem;
+    background-color : rgba(0, 0, 0, 0.04);
+}
+

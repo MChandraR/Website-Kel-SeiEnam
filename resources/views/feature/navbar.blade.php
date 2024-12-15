@@ -10,8 +10,8 @@
 
     <div class="nav-item">
         <a href="/">Beranda</a>
-        <a href="/profile">Profil</a>
         <a href="/kontak">Kontak</a>
+        <a href="/pengaduan">Pengaduan</a>
         <a href="/layanan">Layanan</a>
     </div>
 </nav>

@@ -10,6 +10,5 @@
 <script src="{{asset('js/Chart.min.js')}}"></script>
 
 <!-- Page level custom scripts -->
-<script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
-<script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

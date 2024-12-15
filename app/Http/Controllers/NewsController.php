@@ -11,7 +11,7 @@ class NewsController extends Controller
         return response()->json([
             "status" => 200,
             "message" => "Berhasil mengambil data berita !",
-            "data" => News::all()
+            "data" => News::orderBy('time', "DESC")->get()
         ]);
     }
 

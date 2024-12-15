@@ -6,6 +6,7 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\TemplateController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BeritaController;
+use App\Http\Controllers\PengaduanController;
 use App\Http\Controllers\Auth\SessionController;
 use App\Models\Session;
 
@@ -28,6 +29,8 @@ Route::get('/admin/berita', [AdminController::class, 'berita']);
 Route::get('/admin/login', [AdminController::class, 'loginPage']);
 Route::post('/admin/login', [SessionController::class, 'login'])->name('login');
 Route::post('/admin/register', [SessionController::class, 'register']);
+
+Route::get('/pengaduan', [PengaduanController::class, "index"]);
 
 
 
