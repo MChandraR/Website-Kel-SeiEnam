@@ -20,6 +20,11 @@
     justify-content : end;
 }
 
+.btn-ajukan{
+    font-weight : bold;
+    padding : 1rem;
+}
+
 
 @media only screen and (max-width : 1000px) { 
     .form-area{

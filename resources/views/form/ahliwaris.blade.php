@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="{{asset('css/ahliwaris.css')}}">
 
-
+<br>
 <div>
     <div class="form-area">
         <!-- <div class="preview">
