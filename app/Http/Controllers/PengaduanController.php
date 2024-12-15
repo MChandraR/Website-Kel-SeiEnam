@@ -18,6 +18,21 @@ class PengaduanController extends Controller
     public function read(){
         $data = Pengaduan::all();
 
+        foreach($data as $pengaduan){
+            $pengaduan-> nama = substr($pengaduan->nama, 0,1)."****".substr($pengaduan->nama, -1,1);
+            $pengaduan-> no_whatsapp = substr($pengaduan->no_whatsapp, 0,2)."****".substr($pengaduan->no_whatsapp, -2,2);
+        }
+
+        return response()->json([
+            "status" => 200,
+            "message" => "Berhasil mendapatkan data pengaduan !",
+            "data" => $data
+        ]);
+    }
+
+    public function readmin(){
+        $data = Pengaduan::all();
+
         return response()->json([
             "status" => 200,
             "message" => "Berhasil mendapatkan data pengaduan !",
@@ -37,7 +52,7 @@ class PengaduanController extends Controller
                 "data" => Pengaduan::create([
                     "nama" => $req->nama,
                     "no_whatsapp" => $req->no_whatsapp,
-                    "keluahn" => $req->keluhan
+                    "keluhan" => $req->keluhan
                 ])
             ]);
         }
@@ -45,7 +60,7 @@ class PengaduanController extends Controller
 
         return response()->json([
             "status" => 201, 
-            "message" => "Gagal menambahkan data pengaduan  : Field tidak lengkap !",
+            "message" => "Gagal menambahkan data pengaduan  :  Data tidak lengkap !",
             "data" => NULL
         ]);
     }

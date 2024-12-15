@@ -56,7 +56,7 @@
 
     @include('feature.footer')
 
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         function addPengaduan(){
             $.ajax({
@@ -67,12 +67,18 @@
                     no_whatsapp : $("#waField")[0].value,
                     keluhan : $("#keluhanField")[0].value,
                 },
-                success : (res)=>{
+                success : async (res)=>{
                     if(res.status == 200){
                         $("#namaField")[0].value = "";
                         $("#waField")[0].value = "";
                         $("#keluhanField")[0].value = "";
                     }
+
+                    await Swal.fire({
+                        title : res.status == 200 ? "Sukses" : "Gagal",
+                        text : res.message,
+                        icon : res.status == 200 ? "success" : "error"
+                    });
 
                     console.log(res);
                 },

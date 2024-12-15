@@ -29,5 +29,6 @@ Route::prefix('/')->group(function () {
 
     //API ROute untuk pengaduan
     Route::get('/pengaduan', [PengaduanController::class, 'read']);
+    Route::patch('/pengaduan', [PengaduanController::class, 'readmin']);
     Route::post('/pengaduan', [PengaduanController::class, 'store']);
 });

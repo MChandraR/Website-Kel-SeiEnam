@@ -6,7 +6,7 @@
 .pelayanan-main{
     margin : 7rem 3rem;
     display : grid;
-    grid-template-columns : calc(50% - 1rem) calc(50% - 1rem);
+    grid-template-columns : calc(40% - 1rem) calc(60% - 1rem);
     column-gap : 3rem;
 }
 
@@ -30,8 +30,7 @@
 
 .form-area{
     padding : 1rem;
-    border-radius : .5rem;
-    background-color : rgba(0, 0, 0, 0.04);
+    border-radius : .2rem;
 }
 
 
