@@ -36,37 +36,47 @@
     </div>
 
     <div class="profile-area">
-        <div class="profile-card">
+        <a class="profile-card" href="#profile">
             <img src="{{asset('assets/images/icon/city.png')}}" alt="">
             <span>
                 Profil Kelurahan
             </span>
-        </div>
+        </a>
         <div class="profile-card">
             <img src="{{asset('assets/images/icon/rocket.png')}}" alt="">
             <span>
                 Visi dan Misi
             </span>
         </div>
-        <a class="profile-card" href="/pelayanan">
+        <a class="profile-card" href="/layanan">
             <img src="{{asset('assets/images/icon/customer-service.png')}}" alt="">
             <span>
-                Layanan
+                Pelayanan
+            </span>
+        </a>
+        <a class="profile-card" href="/pengaduan">
+            <img src="{{asset('assets/images/icon/customer-service.png')}}" alt="">
+            <span>
+                Pengaduan
             </span>
         </a>
     </div>
+<br>
+    <div id="profile">
+        <br ><br> 
 
-    <div class="main">
-        <h1 class="section-title">Profil Kelurahan</h1>
-        <hr>
-        <div class="profile">
-            <div class="desc">
-                <h2>Selamat Datang di Kelurahan Sei.Enam</h2>
-                <p>
-                    Sei Enam merupakan salah satu kelurahan yang ada di Kecamatan Bintan Timur, Kabupaten Bintan, Provinsi Kepulauan Riau. Berdasarkan informasi dari https://kampungkb.bkkbn.go.id/, kelurahan Sungai Enam memiliki luas wilayah 52,50 Km2 , dan dihuni sekitar lebih dari 2.713  jiwa penduduk. Sesuai dengan namanya, yaitu Sei Enam, kelurahan ini yang dilingkari oleh enam sungai, yaitu Sungai Kalang Tua, Sungai Tg Tili, Sungai Awat, Sungai Ulu Arang, Sungai Semaram, dan Sungai Mantang.
-                </p>
+        <div class="main" >
+            <h1 class="section-title" >Profil Kelurahan</h1>
+            <hr>
+            <div class="profile" >
+                <div class="desc">
+                    <h2>Selamat Datang di Kelurahan Sei.Enam</h2>
+                    <p>
+                        Sei Enam merupakan salah satu kelurahan yang ada di Kecamatan Bintan Timur, Kabupaten Bintan, Provinsi Kepulauan Riau. Berdasarkan informasi dari https://kampungkb.bkkbn.go.id/, kelurahan Sungai Enam memiliki luas wilayah 52,50 Km2 , dan dihuni sekitar lebih dari 2.713  jiwa penduduk. Sesuai dengan namanya, yaitu Sei Enam, kelurahan ini yang dilingkari oleh enam sungai, yaitu Sungai Kalang Tua, Sungai Tg Tili, Sungai Awat, Sungai Ulu Arang, Sungai Semaram, dan Sungai Mantang.
+                    </p>
+                </div>
+                <img clas="img-grad-left" src="{{asset('assets/images/seienam.jpg')}}" alt="">
             </div>
-            <img clas="img-grad-left" src="{{asset('assets/images/seienam.jpg')}}" alt="">
         </div>
     </div>
 

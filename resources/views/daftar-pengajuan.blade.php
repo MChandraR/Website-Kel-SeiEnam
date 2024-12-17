@@ -38,6 +38,7 @@
                     <td>Pemohon</td>
                     <td>No.Whatsapp</td>
                     <td>Jenis Surat</td>
+                    <td>Status</td>
                 </thead>
 
                 <tbody>
@@ -63,14 +64,15 @@
                 let data =[];
                 console.log(res);
                 res.data.forEach((dat)=>{
-                    data.push([dat.pemohon, dat.no_whatsapp, tipe_surat[dat.tipe] ?? "-"]);
+                    data.push([dat.pemohon, dat.no_whatsapp, tipe_surat[dat.tipe] ?? "-", dat.status]);
                 });
 
                 table = new DataTable("#daftarTable", {
                     columns : [
                         {title : "Pemohon"},
                         {title : "No.Whatsapp"},
-                        {title : "Tipe Surat"}
+                        {title : "Tipe Surat"},
+                        {title : "Status"}
                     ], 
                     data : data,
                     stateSave: true,

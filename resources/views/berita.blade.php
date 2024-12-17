@@ -20,6 +20,8 @@
         <div>
             <h1 class="header">{{$berita->title ?? ""}}</h1>
             <h3>{{$berita->time ?? ""}}</h3>
+            <img class="berita-image" src="{{$berita->image ?? asset('/assets/images/seienam.jpg')}}" alt="">
+
             <p class="keterangan">{{$berita->content ?? ""}} </p>
             <div class="btn-list">
                 <a class="btn btn-primary text-white py-10" href="/">
