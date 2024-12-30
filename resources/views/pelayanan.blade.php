@@ -39,11 +39,11 @@
                     ],
                     [
                         "name" => "Surat Keterangan Penghasilan",
-                        "url" => "/pengajuan?tipe=sktm"
+                        "url" => "/pengajuan?tipe=skp"
                     ],
                     [
                         "name" => "Surat Kematian",
-                        "url" => "/pengajuan?tipe=suratpindah"
+                        "url" => "/pengajuan?tipe=suratkematian"
                     ],
                     [
                         "name" => "Surat Keterangan Domisili ",
@@ -62,4 +62,5 @@
 
     @include('feature.footer')
 </body>
+
 </html>

@@ -15,18 +15,33 @@
 </head>
 <body>
     @include('feature.navbar')
+    <?php
+        $name = [
+            "ahliwaris" => "Ahli Waris",
+            "skp" => "Surat Keterangan Penghasilan",
+            "suratkematian" => "Surat Kematian",
+        ];
+    ?>
 
     <div class="main">
         <a class="btn btn-primary" href="/layanan"> < Kembali ke layanan</a>
         <br><br>
-        <h1>Selamat datang di menu pengajuan {{$pengajuan}}</h1>
+        <h1>Selamat datang di menu pengajuan {{$name[$pengajuan]}}</h1>
         <p>Silahkan isi data untuk surat yang dibutuhkan pada form dibawah ini :</p>
         
-        @include('form.ahliwaris')
+    
 
-        
+
+        @if($pengajuan=="ahliwaris")
+            @include('form.ahliwaris')
+        @elseif($pengajuan=="skp")
+            @include('form.skp')
+        @elseif($pengajuan=="suratkematian")
+            @include('form.kematian')
+        @endif
     </div>
 
     @include('feature.footer')
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

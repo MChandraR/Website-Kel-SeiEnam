@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Permohonan;
-use Auth;
+use Auth;use Exception;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\ValidationException;
 class PengajuanController extends Controller
 {
     public function index(Request $request){
@@ -21,6 +23,8 @@ class PengajuanController extends Controller
     //0 - Ahli waris
     public function create(Request $req){
        if($req->tipe == "aw") return $this->ahliWaris($req);
+       if($req->tipe == "skp") return $this->suratPenghasilan($req);
+       if($req->tipe == "sk") return $this->suratKematian($req);
 
        return response()->json([
             "status" => 201,
@@ -45,6 +49,69 @@ class PengajuanController extends Controller
         ]);
     }
 
+    public function suratKematian(Request $req){
+        try{
+            $data = $req->validate([
+                "pemohon" => 'required',
+                "no_whatsapp" => 'required',
+                "pernyataan" => 'required|file|mimes:png',
+                "kk" => 'required|file|mimes:png',
+                "ktp" => 'required|file|mimes:png',
+                "ahli_waris" => 'required|file|mimes:png',
+            ]);
+
+            try{
+                $localPath = $req->file('pernyataan')->storeAs('/document/sk', time().'_pernyataan_'.$req->file('pernyataan')->getClientOriginalName());
+                $pernyataanPath = Storage::url($localPath);
+            }catch(Exception $e){
+
+            }
+
+            try{
+                $localPath = $req->file('kk')->storeAs('/document/sk', time().'_kk_'.$req->file('kk')->getClientOriginalName());
+                $kkPath = Storage::url($localPath);
+            }catch(Exception $e){
+
+            }
+
+            try{
+                $localPath = $req->file('ktp')->storeAs('/document/sk', time().'_ktp_'.$req->file('ktp')->getClientOriginalName());
+                $ktpPath = Storage::url($localPath);
+            }catch(Exception $e){
+
+            }
+
+            try{
+                $localPath = $req->file('ahli_waris')->storeAs('/document/sk', time().'_ahli_waris_'.$req->file('ahli_waris')->getClientOriginalName());
+                $ahliPath = Storage::url($localPath);
+            }catch(Exception $e){
+
+            }
+
+            return response()->json([
+                "status" => 200,
+                "message" => "Berhasil mengajukan permohonan !",
+                "data" => Permohonan::create([
+                    "pemohon" => $req->pemohon,
+                    "no_whatsapp" => $req->no_whatsapp,
+                    "surat_pernyataan" => $pernyataanPath,
+                    "kk" => $kkPath,
+                    "ktp" => $ktpPath,
+                    "ahli_waris" => $ahliPath,
+                    "tipe" => 2,
+                    "status" => "pending",
+                ])
+            ], 200);
+
+
+        }catch(ValidationException $th){
+            return response()->json([
+                "status" => 401,
+                "message" => "Data tidak boleh kosong !",
+                "data" => NULL
+            ]);
+        }
+    }
 
     public function daftarAjuan(){
         $data = Permohonan::select(["pemohon", "no_whatsapp","tipe", "status"])->get();
@@ -83,7 +150,59 @@ class PengajuanController extends Controller
         ]);
     }
 
+    public function suratPenghasilan(Request $req){
 
+        try{
+
+            $validate = $req->validate([
+                'tipe' => 'required',
+                'pemohon' => 'required',
+                'no_whatsapp' => 'required',
+                'ktp' => 'required|file|mimes:png',
+                'penghasilan' => 'required|file|mimes:png'
+            ]);
+
+
+            try{
+                $imagePath = $req->file("ktp")->storeAs('/document/skp', time().'_ktp_'.$req->file('ktp')->getClientOriginalName());
+                $ktpPath = Storage::url($imagePath);
+            }catch(Exception $e){
+                error_log($e);
+            }
+
+            try{
+                $imagePath = $req->file("penghasilan")->storeAs('/document/skp', time().'_penghasilan_'.$req->file('penghasilan')->getClientOriginalName());
+                $penghasilanPath = Storage::url($imagePath);
+            }catch(Exception $e){
+                error_log($e);
+            }
+
+
+            return response()->json([
+                "status" => 200,
+                "message" => "Berhasil mengajukan permohonan !",
+                "data" => Permohonan::create([
+                    "tipe" => 1,
+                    "pemohon" => $req->pemohon,
+                    "no_whatsapp" => $req->no_whatsapp,
+                    "ktp" => $ktpPath,
+                    "status" => "pending",
+                    "surat_penghasilan" => $penghasilanPath
+                ])
+            ]);
+
+        }catch(ValidationException $th){
+            return response()->json([
+                "status" => 401,
+                "message" => "Data tidak boleh kosong !",
+                "data" => NULL
+            ]);
+        }
+
+    }
+
+
+    //Fungsi untuk menambahkan data ahli waris
     public function ahliWaris(Request $req){
         if( 
             $req->pemohon != NULL && $req->pemohon != "" &&

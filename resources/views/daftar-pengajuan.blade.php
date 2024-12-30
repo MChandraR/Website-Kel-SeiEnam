@@ -54,7 +54,9 @@
 <script>
     let table =null;
     let tipe_surat = [
-        "Ahli Waris"
+        "Ahli Waris",
+        "Surat Keterangan Penghasilan",
+        "Surat Kematian"
     ];
 
     function fetchDataPengajuan(){
@@ -64,7 +66,7 @@
                 let data =[];
                 console.log(res);
                 res.data.forEach((dat)=>{
-                    data.push([dat.pemohon, dat.no_whatsapp, tipe_surat[dat.tipe] ?? "-", dat.status]);
+                    data.push([dat.pemohon, dat.no_whatsapp, tipe_surat[dat.tipe] ?? "-", dat.status ?? "-"]);
                 });
 
                 table = new DataTable("#daftarTable", {

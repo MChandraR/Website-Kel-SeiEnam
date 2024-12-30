@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="{{asset('assets/images/logo/bintan.png')}}">
     <link rel="stylesheet" href="{{asset('css/bootstrap/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{ asset('css/font/ubuntu.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animation.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
@@ -91,7 +92,7 @@
     </div>
 
 
-    <div class="main2">
+    <div class="main2" id="produk">
         <h1 class="section-title">Produk Unggulan</h1>
         <hr>
         <div class="profile2">
@@ -119,6 +120,7 @@ Keunikan otak-otak Sei Enam terletak pada penggunaan daun kelapa sebagai pembung
     @include('feature.footer')
     </body>
 </html>
+<script src="{{asset('js/home.js')}}"></script>
 <script>
     let hari = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jum`at', 'Sabtu', 'Minggu']
     let bulan = ['Januari', 'Februari', 'Maret','April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']

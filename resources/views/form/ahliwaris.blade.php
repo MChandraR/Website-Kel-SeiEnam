@@ -138,10 +138,18 @@ function addPengajuan(){
 
 
         success : (res)=>{
-            console.log(res);
+            Swal.fire({
+                title : res.status == 200 ? "Berhasil" : "Error",
+                icon : res.status == 200 ? "success" : "error",
+                text : res.message,
+            });
         },
         error : (err)=>{
-            console.log(err.statusText);
+            Swal.fire({
+                title : "Gagal",
+                icon  : "error",
+                text : err.statusText,
+            });
         }
     });
 }
