@@ -47,29 +47,27 @@ class AdminController extends Controller
     public function getFile()
 {
     // Ambil path dari query string
-    $path = $_GET["path"];
+    $path = $_GET['path'];
 
-    // Buang "storage" dari path jika ada
-    $relativePath = str_replace("storage", "", $path);
-
-    // Cek apakah file ada di storage/app/private
-    if (!Storage::disk('local')->exists('private' . $relativePath)) {
+    // Periksa apakah file ada di bucket S3
+    if (!Storage::disk('s3')->exists($path)) {
         return response()->json([
             'error' => 'File not found',
-            'path' => $relativePath,
+            'path' => $path,
         ], 404);
     }
 
+    return Storage::disk('s3')->download($path);
     // Ambil isi file
-    $fileData = Storage::disk('local')->get('private' . $relativePath);
+    $fileData = Storage::disk('s3')->get($path);
 
     // Encode data file ke base64
     $base64Data = base64_encode($fileData);
 
     // Dapatkan tipe MIME file
-    $mimeType = Storage::disk('local')->mimeType('private' . $relativePath);
+    $mimeType = Storage::disk('s3')->mimeType($path);
 
-    // Kembalikan respons berupa JSON
+    // Kembalikan data sebagai JSON
     return response()->json([
         'file_name' => basename($path),
         'mime_type' => $mimeType,

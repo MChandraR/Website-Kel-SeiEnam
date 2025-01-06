@@ -107,6 +107,12 @@
                 diproses : "selesai"
             }
 
+            let jenis = [
+            "SKP",
+            "Ahli Waris",
+            "Surat Kematian"
+            ];
+
             $.ajax({
                 url :  "{{$apiRoute}}/pengajuan",
                 success : (res)=>{
@@ -114,7 +120,7 @@
                     console.log(res);
                     data = res.data;
                     res.data.forEach((data, idx)=>{
-                        datas.push([data.pemohon,data.no_whatsapp ?? "",  data.tipe ?? "", new Date(data.created_at).toLocaleString(), data.status??"", 
+                        datas.push([data.pemohon,data.no_whatsapp ?? "",  jenis[data.tipe] ?? "", new Date(data.created_at).toLocaleString(), data.status??"", 
                         `<div style="display:flex; justify-content : right ; column-gap : 1rem;">
                         <button class="btn btn-${data.status == "pending" ?  "success" : "warning"}" onClick="updateData('${data.id}', '${status[data.status]}')">${data.status == "pending" ? "Proses" : "Selesai"}</button>
                         <button class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#exampleModal" onClick="showDetail('${idx}')"> Lihat </button>
@@ -151,7 +157,7 @@
                     let name = data[idx][key];
                     name = name.split("/");
                     name = name[name.length-1];
-                    doc = `<a  id="${key}" class="form-control btn btn-primary text-black" id="basic-url" aria-describedby="basic-addon3" readonly style="color : black;" href="${data[idx][key]}">${name}</a>`;
+                    doc = `<a  id="${key}" class="form-control btn btn-primary text-black" id="basic-url" aria-describedby="basic-addon3" readonly style="color : black;" href="${data[idx][key]}">Lihat file</a>`;
 
                 }else {
                      doc = `<input type="text" id="${key}" class="form-control" id="basic-url" value="${data[idx][key]}" aria-describedby="basic-addon3" readonly>`;

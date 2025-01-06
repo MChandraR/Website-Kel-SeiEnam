@@ -54,39 +54,104 @@ class PengajuanController extends Controller
             $data = $req->validate([
                 "pemohon" => 'required',
                 "no_whatsapp" => 'required',
-                "pernyataan" => 'required|file|mimes:png',
-                "kk" => 'required|file|mimes:png',
-                "ktp" => 'required|file|mimes:png',
-                "ahli_waris" => 'required|file|mimes:png',
+                "pernyataan" => 'required|file',
+                "kk" => 'required|file',
+                "ktp" => 'required|file',
+                "ahli_waris" => 'required|file',
             ]);
-
-            try{
-                $localPath = $req->file('pernyataan')->storeAs('/document/sk', time().'_pernyataan_'.$req->file('pernyataan')->getClientOriginalName());
-                $pernyataanPath = Storage::url($localPath);
-            }catch(Exception $e){
-
+ 
+            $pernyataanPath = "";
+            $kkPath = "";
+            $ktpPath = "";
+            $ahliPath = "";
+            try {
+                // Simpan file ke S3
+                $file = $req->file('pernyataan');
+                $fileName = time() . '_pernyataan_' . $file->getClientOriginalName();
+            
+                // Path di bucket S3 tempat file akan disimpan
+                $s3Path = 'document/sk/' . $fileName;
+            
+                // Simpan file ke S3
+                $s3PathStored = Storage::disk('s3')->put($s3Path, file_get_contents($file));
+            
+                // Dapatkan URL publik dari file (jika bucket memiliki akses publik)
+                $pernyataanPath = Storage::disk('s3')->url($s3Path);
+            
+           
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'File upload failed',
+                    'message' => $e->getMessage(),
+                ], 500);
             }
-
-            try{
-                $localPath = $req->file('kk')->storeAs('/document/sk', time().'_kk_'.$req->file('kk')->getClientOriginalName());
-                $kkPath = Storage::url($localPath);
-            }catch(Exception $e){
-
+           
+            try {
+                // Simpan file ke S3
+                $file = $req->file('kk');
+                $fileName = time() . '_kk_' . $file->getClientOriginalName();
+            
+                // Path di bucket S3 tempat file akan disimpan
+                $s3Path = 'document/sk/' . $fileName;
+            
+                // Simpan file ke S3
+                $s3PathStored = Storage::disk('s3')->put($s3Path, file_get_contents($file));
+            
+                // Dapatkan URL publik dari file (jika bucket memiliki akses publik)
+                $kkPath = Storage::disk('s3')->url($s3Path);
+           
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'File upload failed',
+                    'message' => $e->getMessage(),
+                ], 500);
             }
+            
 
-            try{
-                $localPath = $req->file('ktp')->storeAs('/document/sk', time().'_ktp_'.$req->file('ktp')->getClientOriginalName());
-                $ktpPath = Storage::url($localPath);
-            }catch(Exception $e){
-
+            try {
+                // Simpan file ke S3
+                $file = $req->file('ktp');
+                $fileName = time() . '_ktp_' . $file->getClientOriginalName();
+            
+                // Path di bucket S3 tempat file akan disimpan
+                $s3Path = 'document/sk/' . $fileName;
+            
+                // Simpan file ke S3
+                $s3PathStored = Storage::disk('s3')->put($s3Path, file_get_contents($file));
+            
+                // Dapatkan URL publik dari file (jika bucket memiliki akses publik)
+                $ktpPath = Storage::disk('s3')->url($s3Path);
+        
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'File upload failed',
+                    'message' => $e->getMessage(),
+                ], 500);
             }
+            
 
-            try{
-                $localPath = $req->file('ahli_waris')->storeAs('/document/sk', time().'_ahli_waris_'.$req->file('ahli_waris')->getClientOriginalName());
-                $ahliPath = Storage::url($localPath);
-            }catch(Exception $e){
-
+            try {
+                // Simpan file ke S3
+                $file = $req->file('ahli_waris');
+                $fileName = time() . '_ahli_waris_' . $file->getClientOriginalName();
+            
+                // Path di bucket S3 tempat file akan disimpan
+                $s3Path = 'document/sk/' . $fileName;
+            
+                // Simpan file ke S3
+                $s3PathStored = Storage::disk('s3')->put($s3Path, file_get_contents($file));
+            
+                // Dapatkan URL publik dari file (jika bucket memiliki akses publik)
+                $ahliPath = Storage::disk('s3')->url($s3Path);
+            
+           
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'File upload failed',
+                    'message' => $e->getMessage(),
+                ], 500);
             }
+            
 
             return response()->json([
                 "status" => 200,
@@ -158,23 +223,53 @@ class PengajuanController extends Controller
                 'tipe' => 'required',
                 'pemohon' => 'required',
                 'no_whatsapp' => 'required',
-                'ktp' => 'required|file|mimes:png',
-                'penghasilan' => 'required|file|mimes:png'
+                'ktp' => 'required|file',
+                'penghasilan' => 'required|file'
             ]);
-
-
-            try{
-                $imagePath = $req->file("ktp")->storeAs('/document/skp', time().'_ktp_'.$req->file('ktp')->getClientOriginalName());
-                $ktpPath = Storage::url($imagePath);
-            }catch(Exception $e){
-                error_log($e);
+            $ktpPath = "";
+            $penghasilanPath = "";
+            try {
+                // Simpan file ke S3
+                $file = $req->file('ktp');
+                $fileName = time() . '_ktp_' . $file->getClientOriginalName();
+            
+                // Path di bucket S3 tempat file akan disimpan
+                $s3Path = 'document/skp' . $fileName;
+            
+                // Simpan file ke S3
+                $s3PathStored = Storage::disk('s3')->put($s3Path, file_get_contents($file));
+            
+                // Dapatkan URL publik dari file (jika bucket memiliki akses publik)
+                $ktpPath= Storage::disk('s3')->url($s3Path);
+            
+           
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'File upload failed',
+                    'message' => $e->getMessage(),
+                ], 500);
             }
 
-            try{
-                $imagePath = $req->file("penghasilan")->storeAs('/document/skp', time().'_penghasilan_'.$req->file('penghasilan')->getClientOriginalName());
-                $penghasilanPath = Storage::url($imagePath);
-            }catch(Exception $e){
-                error_log($e);
+            try {
+                // Simpan file ke S3
+                $file = $req->file('penghasilan');
+                $fileName = time() . '_penghasilan_' . $file->getClientOriginalName();
+            
+                // Path di bucket S3 tempat file akan disimpan
+                $s3Path = 'document/skp/' . $fileName;
+            
+                // Simpan file ke S3
+                $s3PathStored = Storage::disk('s3')->put($s3Path, file_get_contents($file));
+            
+                // Dapatkan URL publik dari file (jika bucket memiliki akses publik)
+                $penghasilanPath = Storage::disk('s3')->url($s3Path);
+            
+           
+            } catch (Exception $e) {
+                return response()->json([
+                    'error' => 'File upload failed',
+                    'message' => $e->getMessage(),
+                ], 500);
             }
 
 
