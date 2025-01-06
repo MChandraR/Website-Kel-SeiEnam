@@ -24,6 +24,7 @@ Route::get('/template/ahliwaris', [TemplateController::class, 'ahliWaris']);
 
 
 Route::get('/admin', [AdminController::class, 'index'])->middleware('auth')->name('dashboard');
+Route::get('/file', [AdminController::class, 'getFile']);
 Route::get('/admin/permohonan', [AdminController::class, 'permohonan'])->middleware('auth');
 Route::get('/admin/pengaduan', [AdminController::class, 'pengaduan'])->middleware('auth');
 Route::get('/admin/berita', [AdminController::class, 'berita']);

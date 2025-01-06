@@ -146,11 +146,21 @@
         function showDetail(idx){
             $("#detailPengajuan")[0].innerHTML = "";
             for(let key in data[idx]){
-                console.log(key, data[idx][key]);
+                let doc = "";
+                if(typeof data[idx][key] == "string" && data[idx][key].includes("/")){
+                    let name = data[idx][key];
+                    name = name.split("/");
+                    name = name[name.length-1];
+                    doc = `<a  id="${key}" class="form-control btn btn-primary text-black" id="basic-url" aria-describedby="basic-addon3" readonly style="color : black;" href="${data[idx][key]}">${name}</a>`;
+
+                }else {
+                     doc = `<input type="text" id="${key}" class="form-control" id="basic-url" value="${data[idx][key]}" aria-describedby="basic-addon3" readonly>`;
+                }
+                    console.log(key, data[idx][key]);
                 $("#detailPengajuan")[0].innerHTML += `
-                <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon3">${key}</span>
-                    <input type="text" id="${key}" class="form-control" id="basic-url" value="${data[idx][key]}" aria-describedby="basic-addon3">
+                <div class=" mb-3">
+                    <label class="form-label" id="basic-addon3">${key}</label>
+                    ${doc}
                 </div>
                 `;
             }

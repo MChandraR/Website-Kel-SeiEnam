@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\users;
 use App\Models\Permohonan;
 use Auth;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -42,6 +43,40 @@ class AdminController extends Controller
         $username = Auth::user()->username?? "";
         return View('admin.berita', compact('username'));
     }
+
+    public function getFile()
+{
+    // Ambil path dari query string
+    $path = $_GET["path"];
+
+    // Buang "storage" dari path jika ada
+    $relativePath = str_replace("storage", "", $path);
+
+    // Cek apakah file ada di storage/app/private
+    if (!Storage::disk('local')->exists('private' . $relativePath)) {
+        return response()->json([
+            'error' => 'File not found',
+            'path' => $relativePath,
+        ], 404);
+    }
+
+    // Ambil isi file
+    $fileData = Storage::disk('local')->get('private' . $relativePath);
+
+    // Encode data file ke base64
+    $base64Data = base64_encode($fileData);
+
+    // Dapatkan tipe MIME file
+    $mimeType = Storage::disk('local')->mimeType('private' . $relativePath);
+
+    // Kembalikan respons berupa JSON
+    return response()->json([
+        'file_name' => basename($path),
+        'mime_type' => $mimeType,
+        'data' => $base64Data,
+    ]);
+}
+
 
    
 }
